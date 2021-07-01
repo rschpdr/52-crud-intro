@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 // R do CRUD (READ): Operação de leitura de todos os registros
@@ -34,6 +35,7 @@ class CharacterList extends Component {
             <th>ID</th>
             <th>Name</th>
             <th>Occupation</th>
+            <th>Actions</th>
           </tr>
         </thead>
         {/* Corpo da tabela */}
@@ -47,6 +49,11 @@ class CharacterList extends Component {
                 <td>{character.id}</td>
                 <td>{character.name}</td>
                 <td>{character.occupation}</td>
+                <td>
+                  <Link to={`/edit-character/${character.id}`}>
+                    <i className="fas fa-edit"></i>
+                  </Link>
+                </td>
               </tr>
             );
           })}
