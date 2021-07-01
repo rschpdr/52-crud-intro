@@ -14,17 +14,20 @@ class NewCharacter extends Component {
     weapon: "",
   };
 
+  // Atualizar o state com o valor interno do input quando o usuário dispara o evento 'change'
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Envia os dados para a API quando acontece o evento 'submit', que é disparado quando o usuário aciona um botão com 'type' submit dentro de um formulário
   handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Previne o comportamento padrão dos formulários, que é recarregar a página e enviar os dados através da URL
 
     axios
       .post("https://ih-crud-api.herokuapp.com/characters", this.state)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        this.props.history.push("/"); // Redireciona a aplicação de volta pra lista de personagens
       })
       .catch((err) => {
         console.log(err);

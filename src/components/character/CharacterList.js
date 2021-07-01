@@ -50,8 +50,26 @@ class CharacterList extends Component {
                 <td>{character.name}</td>
                 <td>{character.occupation}</td>
                 <td>
-                  <Link to={`/edit-character/${character.id}`}>
+                  <Link
+                    className="me-2"
+                    to={`/edit-character/${character.id}`}
+                    title="Edit"
+                  >
                     <i className="fas fa-edit"></i>
+                  </Link>
+                  <Link
+                    className="me-2"
+                    to={`/character/${character.id}`}
+                    title="View details"
+                  >
+                    <i className="fas fa-info-circle"></i>
+                  </Link>
+                  <Link
+                    to={`/delete-character/${character.id}`}
+                    title="Delete character"
+                    className="text-danger"
+                  >
+                    <i className="fas fa-trash-alt"></i>
                   </Link>
                 </td>
               </tr>

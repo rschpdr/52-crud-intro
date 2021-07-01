@@ -14,27 +14,45 @@ class EditCharacter extends Component {
     weapon: "",
   };
 
+  // Em formulários de edição, sempre precisamos primeiramente carregar os dados que já existem para dar ao usuário a possibiliadde de alterá-los. Por isso fazemos uma requisição GET e populamos o state.
+  componentDidMount = async () => {
+    try {
+      const id = this.props.match.params.id; // Parâmetro de rota injetado pelo componente Route
+
+      const response = await axios.get(
+        `https://ih-crud-api.herokuapp.com/characters/${id}`
+      );
+
+      this.setState({ ...response.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  //   handleSubmit = (event) => {
-  //     event.preventDefault();
+  handleSubmit = (event) => {
+    const id = this.props.match.params.id;
 
-  //     axios
-  //       .post("https://ih-crud-api.herokuapp.com/characters", this.state)
-  //       .then((response) => {
-  //         console.log(response);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+    event.preventDefault();
+
+    axios
+      .put(`https://ih-crud-api.herokuapp.com/characters/${id}`, this.state)
+      .then((response) => {
+        // console.log(response);
+        this.props.history.push("/"); // Redireciona a aplicação de volta pra lista de personagens
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
       <div>
-        <h1>New Character</h1>
+        <h1>Edit Character</h1>
         <hr />
         <form onSubmit={this.handleSubmit}>
           <TextInput
