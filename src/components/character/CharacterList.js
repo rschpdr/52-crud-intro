@@ -15,7 +15,7 @@ class CharacterList extends Component {
         "https://ih-crud-api.herokuapp.com/characters"
       );
 
-      console.log(response);
+      // console.log(response);
 
       this.setState({ characters: [...response.data] });
     } catch (err) {
