@@ -9,7 +9,7 @@ import EditCharacter from "./character/EditCharacter";
 import CharacterDetails from "./character/CharacterDetails";
 import DeleteCharacter from "./character/DeleteCharacter";
 
-import AboutMussum from "./AboutMussum";
+import About from "./About";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         {/* D do CRUD (DELETE): Deleta um registro específico */}
         <Route path="/delete-character/:id" component={DeleteCharacter} />
 
-        <Route path="/about-mussum" component={AboutMussum} />
+        <Route path="/about" component={About} />
       </div>
     </BrowserRouter>
   );
