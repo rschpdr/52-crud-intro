@@ -9,6 +9,8 @@ import EditCharacter from "./character/EditCharacter";
 import CharacterDetails from "./character/CharacterDetails";
 import DeleteCharacter from "./character/DeleteCharacter";
 
+import AboutMussum from "./AboutMussum";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +30,8 @@ function App() {
 
         {/* D do CRUD (DELETE): Deleta um registro específico */}
         <Route path="/delete-character/:id" component={DeleteCharacter} />
+
+        <Route path="/about-mussum" component={AboutMussum} />
       </div>
     </BrowserRouter>
   );
